@@ -27,6 +27,7 @@ __meta__ = {
 scale = Vector2( 0.0237362, 0.0232307 )
 frames = SubResource( 1 )
 animation = "quay"
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
