@@ -56,6 +56,11 @@ shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+limit_left = 0
+limit_top = 0
+limit_bottom = 600
+smoothing_enabled = true
+editor_draw_limits = true
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 32, 3.5 )
