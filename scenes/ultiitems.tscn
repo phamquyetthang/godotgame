@@ -1,0 +1,38 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/thuner/3.png" type="Texture" id=1]
+[ext_resource path="res://assets/thuner/4.png" type="Texture" id=2]
+[ext_resource path="res://assets/thuner/6.png" type="Texture" id=3]
+[ext_resource path="res://assets/thuner/1.png" type="Texture" id=4]
+[ext_resource path="res://assets/thuner/5.png" type="Texture" id=5]
+[ext_resource path="res://assets/thuner/2.png" type="Texture" id=6]
+[ext_resource path="res://scripts/ultiitems.gd" type="Script" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "burn",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 8.87151
+
+[node name="ultiitems" type="Area2D"]
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+rotation = -1.57079
+scale = Vector2( 0.12, 0.12 )
+frames = SubResource( 1 )
+animation = "burn"
+frame = 5
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 5, 12 )
+shape = SubResource( 2 )

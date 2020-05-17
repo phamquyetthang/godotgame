@@ -7,17 +7,21 @@ var velocity = Vector2()
 var direction = 1
 var is_dead = false
 
+export(int) var hp = 3
 
-func dead():
-	is_dead = true
-	$enemy.position = Vector2(0,8)
-	velocity = Vector2(0, 0)
-	$enemy.play("dead")
-	$CollisionShape2D.call_deferred("set_disabled", true)
-	$Timer.start()
+func dead(damage):
+	hp -= damage
+	if hp <= 0 :
+		is_dead = true
+		$enemy.position = Vector2(0,8)
+		velocity = Vector2(0, 0)
+		$enemy.play("dead")
+		$CollisionShape2D.call_deferred("set_disabled", true)
+		$Timer.start()
 
 
 func _physics_process(delta):
+	delta = delta
 	if is_dead == false :
 		velocity.x = speed * direction
 		if direction == 1:
@@ -33,6 +37,9 @@ func _physics_process(delta):
 
 
 
-
 func _on_Timer_timeout():
 	queue_free()
+
+
+func _on_TimerLoop_timeout():
+	direction *= -1

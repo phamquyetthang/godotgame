@@ -1,43 +1,67 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=33 format=2]
 
-[ext_resource path="res://assets/Player/Jump4.png" type="Texture" id=1]
-[ext_resource path="res://assets/Player/Run1.png" type="Texture" id=2]
-[ext_resource path="res://assets/Player/Run4.png" type="Texture" id=3]
-[ext_resource path="res://assets/Player/Run7.png" type="Texture" id=4]
-[ext_resource path="res://assets/Player/Run3.png" type="Texture" id=5]
-[ext_resource path="res://assets/Player/Run2.png" type="Texture" id=6]
-[ext_resource path="res://assets/Player/Jump3.png" type="Texture" id=7]
-[ext_resource path="res://assets/Player/Idle0.png" type="Texture" id=8]
-[ext_resource path="res://assets/Player/Jump1.png" type="Texture" id=9]
-[ext_resource path="res://assets/Player/Run0.png" type="Texture" id=10]
+[ext_resource path="res://assets/png/Run__000.png" type="Texture" id=1]
+[ext_resource path="res://assets/png/Jump__005.png" type="Texture" id=2]
+[ext_resource path="res://assets/png/Run__007.png" type="Texture" id=3]
+[ext_resource path="res://assets/png/Run__009.png" type="Texture" id=4]
+[ext_resource path="res://assets/png/Run__004.png" type="Texture" id=5]
+[ext_resource path="res://assets/png/Run__006.png" type="Texture" id=6]
+[ext_resource path="res://assets/png/Run__005.png" type="Texture" id=7]
+[ext_resource path="res://assets/png/Idle__003.png" type="Texture" id=8]
+[ext_resource path="res://assets/png/Jump__006.png" type="Texture" id=9]
+[ext_resource path="res://assets/png/Run__008.png" type="Texture" id=10]
 [ext_resource path="res://scripts/player.gd" type="Script" id=11]
+[ext_resource path="res://assets/png/Idle__000.png" type="Texture" id=12]
+[ext_resource path="res://assets/png/Idle__005.png" type="Texture" id=13]
+[ext_resource path="res://assets/png/Idle__002.png" type="Texture" id=14]
+[ext_resource path="res://assets/png/Idle__004.png" type="Texture" id=15]
+[ext_resource path="res://assets/png/Idle__001.png" type="Texture" id=16]
+[ext_resource path="res://assets/png/Run__002.png" type="Texture" id=17]
+[ext_resource path="res://assets/png/Run__001.png" type="Texture" id=18]
+[ext_resource path="res://assets/png/Jump__001.png" type="Texture" id=19]
+[ext_resource path="res://assets/png/Run__003.png" type="Texture" id=20]
+[ext_resource path="res://assets/png/Dead__004.png" type="Texture" id=21]
+[ext_resource path="res://assets/png/Dead__009.png" type="Texture" id=22]
+[ext_resource path="res://assets/png/Dead__000.png" type="Texture" id=23]
+[ext_resource path="res://assets/png/Dead__002.png" type="Texture" id=24]
+[ext_resource path="res://assets/png/Dead__006.png" type="Texture" id=25]
+[ext_resource path="res://assets/png/Dead__005.png" type="Texture" id=26]
+[ext_resource path="res://assets/png/Dead__008.png" type="Texture" id=27]
+[ext_resource path="res://assets/png/Dead__003.png" type="Texture" id=28]
+[ext_resource path="res://assets/png/Dead__001.png" type="Texture" id=29]
+[ext_resource path="res://assets/png/Dead__007.png" type="Texture" id=30]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 8 ) ],
+"frames": [ ExtResource( 12 ), ExtResource( 16 ), ExtResource( 14 ), ExtResource( 8 ), ExtResource( 15 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 1 ) ],
+"frames": [ ExtResource( 23 ), ExtResource( 29 ), ExtResource( 24 ), ExtResource( 28 ), ExtResource( 21 ), ExtResource( 26 ), ExtResource( 25 ), ExtResource( 30 ), ExtResource( 27 ), ExtResource( 22 ) ],
+"loop": false,
+"name": "dead",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 19 ) ],
 "loop": true,
 "name": "jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 7 ), ExtResource( 1 ) ],
+"frames": [ ExtResource( 1 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 20 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 10 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "run",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "fall",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 10 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "run",
-"speed": 10.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 11.2199
-height = 35.06
+height = 31.1571
 
 [node name="player" type="KinematicBody2D"]
 z_index = 1
@@ -47,11 +71,12 @@ __meta__ = {
 }
 
 [node name="cute" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.12, 0.12 )
 frames = SubResource( 1 )
 animation = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 3.5 )
+position = Vector2( 0, -0.5 )
 shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -63,9 +88,20 @@ smoothing_enabled = true
 editor_draw_limits = true
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 32, 3.5 )
+position = Vector2( 30, 0 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+
+[node name="TimerDead" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="TimerStart" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="TimerDead" to="." method="_on_TimerDead_timeout"]
+[connection signal="timeout" from="TimerStart" to="." method="_on_TimerStart_timeout"]

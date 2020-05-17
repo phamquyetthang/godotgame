@@ -27,7 +27,6 @@ rotation = 1.57079
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "fire"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
