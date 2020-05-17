@@ -57,8 +57,7 @@ one_shot = true
 [node name="enemy" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.12, 0.12 )
 frames = SubResource( 2 )
-animation = "dead"
-frame = 10
+animation = "walk"
 
 [node name="TimerLoop" type="Timer" parent="."]
 wait_time = 3.0

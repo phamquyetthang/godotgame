@@ -11,6 +11,10 @@ const ULTI = preload("res://scenes/ultimate.tscn")
 var dev_mod = false
 var is_live = true
 var is_start = false
+signal update_live()
+signal update_coin()
+signal update_fire()
+signal update_ulti()
 var coins = 0
 var sfire = 3
 var sulti = 0
@@ -49,7 +53,6 @@ func _is_live():
 
 func skill_q():
 	if sfire > 0:
-		print(sfire)
 		var ballposition = sign($Position2D.position.x)
 		$Position2D.position = Vector2(30, 0)
 		var fileball = FIREBALL.instance()
@@ -96,10 +99,14 @@ func _on_TimerStart_timeout():
 
 func set_coin(x):
 	coins+=x
+	emit_signal("update_coin", coins)
 
 func set_fire(x):
 	sfire += x
+	emit_signal("update_fire", sfire)
 func set_ulti(x):
 	sulti += x
+	emit_signal("update_ulti", sulti)
 func set_hp(n):
 	hp += n
+	emit_signal("update_live", hp)
