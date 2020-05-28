@@ -15,9 +15,19 @@ signal update_live()
 signal update_coin()
 signal update_fire()
 signal update_ulti()
+signal update_speed()
 var coins = 0
 var sfire = 3
 var sulti = 0
+func _is_dead():
+	is_live = false
+	if not is_on_floor():
+		$cute.position = Vector2(0, 48)
+	$CollisionShape2D.call_deferred("set_disabled", true)
+	motion = Vector2(0, 0)
+	$cute.play("dead")
+	$TimerDead.start()
+	
 func _is_live():
 	motion.y += g
 	if dev_mod == false:
@@ -25,7 +35,7 @@ func _is_live():
 		$cute.play("run")
 		$cute.flip_h = false
 		$cute.position = Vector2(0, 1)
-	
+		emit_signal("update_speed", maxspeed)
 	if Input.is_action_pressed("on_mod"):
 		motion.x = 0
 		$cute.play('idle')
@@ -49,8 +59,10 @@ func _is_live():
 	if get_slide_count() > 0:
 		for i in range (get_slide_count()):
 			if "enemies" in get_slide_collision(i).collider.name:
+				hp = 0
+				emit_signal("update_live", hp)
+				get_slide_collision(i).collider.dead(10)
 				_is_dead()
-
 func skill_q():
 	if sfire > 0:
 		var ballposition = sign($Position2D.position.x)
@@ -81,15 +93,10 @@ func _physics_process(delta):
 		if is_live == true:
 			_is_live()
 	
-func _is_dead():
-	is_live = false
-	motion = Vector2(0, 0)
-	$cute.play("dead")
-	$CollisionShape2D.call_deferred("set_disabled", true)
-	$TimerDead.start()
+	
+
 func _on_Timer_timeout():
 	maxspeed += 20
-
 
 func _on_TimerDead_timeout():
 	get_tree().change_scene("res://scenes/menu.tscn")

@@ -1,0 +1,77 @@
+[gd_scene load_steps=34 format=2]
+
+[ext_resource path="res://assets/monster/Run (5).png" type="Texture" id=1]
+[ext_resource path="res://assets/monster/Run (6).png" type="Texture" id=2]
+[ext_resource path="res://assets/monster/Run (4).png" type="Texture" id=3]
+[ext_resource path="res://assets/monster/Run (3).png" type="Texture" id=4]
+[ext_resource path="res://assets/monster/Run (1).png" type="Texture" id=5]
+[ext_resource path="res://assets/monster/Run (2).png" type="Texture" id=6]
+[ext_resource path="res://assets/monster/Run (7).png" type="Texture" id=7]
+[ext_resource path="res://assets/monster/Run (8).png" type="Texture" id=8]
+[ext_resource path="res://assets/monster/Run (9).png" type="Texture" id=9]
+[ext_resource path="res://assets/monster/Run (10).png" type="Texture" id=10]
+[ext_resource path="res://scripts/monster.gd" type="Script" id=11]
+[ext_resource path="res://assets/monster/Idle (1).png" type="Texture" id=12]
+[ext_resource path="res://assets/monster/Idle (5).png" type="Texture" id=13]
+[ext_resource path="res://assets/monster/Idle (10).png" type="Texture" id=14]
+[ext_resource path="res://assets/monster/Idle (6).png" type="Texture" id=15]
+[ext_resource path="res://assets/monster/Idle (4).png" type="Texture" id=16]
+[ext_resource path="res://assets/monster/Idle (8).png" type="Texture" id=17]
+[ext_resource path="res://assets/monster/Idle (7).png" type="Texture" id=18]
+[ext_resource path="res://assets/monster/Idle (9).png" type="Texture" id=19]
+[ext_resource path="res://assets/monster/Idle (3).png" type="Texture" id=20]
+[ext_resource path="res://assets/monster/Idle (2).png" type="Texture" id=21]
+[ext_resource path="res://assets/monster/Run (11).png" type="Texture" id=22]
+[ext_resource path="res://assets/monster/Run (20).png" type="Texture" id=23]
+[ext_resource path="res://assets/monster/Run (15).png" type="Texture" id=24]
+[ext_resource path="res://assets/monster/Run (16).png" type="Texture" id=25]
+[ext_resource path="res://assets/monster/Run (13).png" type="Texture" id=26]
+[ext_resource path="res://assets/monster/Run (18).png" type="Texture" id=27]
+[ext_resource path="res://assets/monster/Run (17).png" type="Texture" id=28]
+[ext_resource path="res://assets/monster/Run (19).png" type="Texture" id=29]
+[ext_resource path="res://assets/monster/Run (14).png" type="Texture" id=30]
+[ext_resource path="res://assets/monster/Run (12).png" type="Texture" id=31]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "idle",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 22 ), ExtResource( 31 ), ExtResource( 26 ), ExtResource( 30 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 28 ), ExtResource( 27 ), ExtResource( 29 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "run",
+"speed": 20.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 38.6452
+
+[node name="monster" type="Area2D"]
+position = Vector2( 134.074, 57.3577 )
+z_index = 1
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="baby" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.24, 0.24 )
+frames = SubResource( 1 )
+animation = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.487671, 6.33977 )
+shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="TimerStart" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+[connection signal="body_entered" from="." to="." method="_on_monster_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="TimerStart" to="." method="_on_TimerStart_timeout"]

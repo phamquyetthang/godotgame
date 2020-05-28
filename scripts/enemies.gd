@@ -13,10 +13,10 @@ func dead(damage):
 	hp -= damage
 	if hp <= 0 :
 		is_dead = true
-		$enemy.position = Vector2(0,8)
+		$CollisionShape2D.call_deferred("set_disabled", true)
+		$enemy.position = Vector2(0,10)
 		velocity = Vector2(0, 0)
 		$enemy.play("dead")
-		$CollisionShape2D.call_deferred("set_disabled", true)
 		$Timer.start()
 
 

@@ -59,6 +59,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="v" type="Label" parent="HBoxContainer"]
+anchor_left = 0.489
+anchor_top = 0.188
+anchor_right = 0.538
+anchor_bottom = 1.125
+margin_left = 0.242004
+margin_top = -0.0079999
+margin_right = 0.164001
+margin_bottom = 1.90735e-06
+custom_fonts/font = SubResource( 3 )
+text = "V: "
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vantoc" type="Label" parent="HBoxContainer/v"]
+anchor_left = 0.3
+anchor_right = 0.9
+anchor_bottom = 1.0
+margin_left = -8.58307e-06
+margin_right = -2.67029e-05
+margin_bottom = -9.53674e-07
+custom_fonts/font = SubResource( 3 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="HBoxContainer" type="Control" parent="HBoxContainer"]
 margin_left = 873.677
 margin_top = -0.32354
@@ -82,13 +112,14 @@ __meta__ = {
 }
 
 [node name="coin" type="Label" parent="HBoxContainer/HBoxContainer"]
-anchor_left = 0.033
-anchor_right = 0.36
-anchor_bottom = 1.437
-margin_left = 10.05
-margin_top = 3.0
-margin_right = -14.001
-margin_bottom = -3.99206
+anchor_left = 0.1
+anchor_top = 0.187
+anchor_right = 0.267
+anchor_bottom = 1.187
+margin_left = -0.000200272
+margin_top = 0.00799251
+margin_right = -0.0507202
+margin_bottom = 0.00794983
 custom_fonts/font = SubResource( 3 )
 text = "0"
 valign = 1
