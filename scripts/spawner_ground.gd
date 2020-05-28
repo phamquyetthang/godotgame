@@ -5,6 +5,7 @@ const scn_ground = preload("res://scenes/ground.tscn")
 const GROUND_WIDTH = 6368
 const AMOUNT_TO_FILL_VIEW = 2
 func _ready():
+# warning-ignore:unused_variable
 	for i in range(AMOUNT_TO_FILL_VIEW):
 		spawn_and_move()
 	pass

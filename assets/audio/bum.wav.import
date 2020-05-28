@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bum.wav-bc2a1c72bdb457c3ba5df51c5a937449.sample"
+
+[deps]
+
+source_file="res://assets/audio/bum.wav"
+dest_files=[ "res://.import/bum.wav-bc2a1c72bdb457c3ba5df51c5a937449.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

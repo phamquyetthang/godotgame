@@ -19,6 +19,10 @@ config/name="godotgame"
 run/main_scene="res://scenes/menu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GLOBAL="*res://global.gd"
+
 [input]
 
 my_right={

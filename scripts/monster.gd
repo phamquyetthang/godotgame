@@ -39,3 +39,8 @@ func _on_monster_body_entered(body):
 	if "player" in body.name:
 		body._is_dead()
 		is_start = false
+
+
+func _on_player_died():
+	is_start = false
+	pass

@@ -5,8 +5,6 @@ onready var pos_l = get_node("position_l")
 onready var camera = get_node("../../../Camera2D")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(pos_l.position.x)
-	print(camera.position.x)
 	set_process(true)
 	pass # Replace with function body.
 

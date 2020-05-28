@@ -28,7 +28,7 @@ texture = ExtResource( 9 )
 centered = false
 
 [node name="player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 192, 470.868 )
+position = Vector2( 192, 483 )
 
 [node name="spawner_ground" parent="." instance=ExtResource( 1 )]
 
@@ -109,6 +109,7 @@ position = Vector2( 992, 480 )
 
 [node name="monster" parent="." instance=ExtResource( 13 )]
 position = Vector2( 96, 455.2 )
+[connection signal="died" from="player" to="monster" method="_on_player_died"]
 [connection signal="update_coin" from="player" to="itemlist" method="_on_player_update_coin"]
 [connection signal="update_fire" from="player" to="itemlist" method="_on_player_update_fire"]
 [connection signal="update_live" from="player" to="itemlist" method="_on_player_update_live"]

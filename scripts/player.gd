@@ -16,17 +16,20 @@ signal update_coin()
 signal update_fire()
 signal update_ulti()
 signal update_speed()
+signal died()
 var coins = 0
 var sfire = 3
 var sulti = 0
 func _is_dead():
 	is_live = false
+	$died.play()
 	if not is_on_floor():
 		$cute.position = Vector2(0, 48)
 	$CollisionShape2D.call_deferred("set_disabled", true)
 	motion = Vector2(0, 0)
 	$cute.play("dead")
 	$TimerDead.start()
+	emit_signal("died")
 	
 func _is_live():
 	motion.y += g
@@ -45,6 +48,7 @@ func _is_live():
 	if is_on_floor():
 		if Input.is_action_just_pressed("my_up"):
 			motion.y = -jump
+			$jump.play()
 	else:
 		if motion.y < 0:
 			$cute.play("jump")
@@ -70,6 +74,7 @@ func skill_q():
 		var fileball = FIREBALL.instance()
 		fileball.set_direction(ballposition)
 		get_parent().add_child(fileball)
+		$shoot_q.play()
 		fileball.position = $Position2D.global_position
 		set_fire(-1)
 
@@ -80,6 +85,7 @@ func skill_r():
 		var ulti = ULTI.instance()
 		ulti.set_direction(ballposition)
 		get_parent().add_child(ulti)
+		$shoot_r.play()
 		ulti.position = $Position2D.global_position
 		set_ulti(-1)
 
@@ -99,13 +105,15 @@ func _on_Timer_timeout():
 	maxspeed += 20
 
 func _on_TimerDead_timeout():
-	get_tree().change_scene("res://scenes/menu.tscn")
+	get_tree().change_scene("res://scenes/endmenu.tscn")
 
 func _on_TimerStart_timeout():
 	is_start = true
 
 func set_coin(x):
 	coins+=x
+	GLOBAL.coins = coins
+	$audiocoin.play()
 	emit_signal("update_coin", coins)
 
 func set_fire(x):
@@ -116,4 +124,5 @@ func set_ulti(x):
 	emit_signal("update_ulti", sulti)
 func set_hp(n):
 	hp += n
+	$audiovirus.play()
 	emit_signal("update_live", hp)

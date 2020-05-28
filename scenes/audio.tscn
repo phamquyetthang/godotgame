@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/audio/ai2.wav" type="AudioStream" id=1]
+[ext_resource path="res://assets/audio/bum.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/audio/chiu.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/coin1.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/hu.wav" type="AudioStream" id=5]
+
+[node name="audio" type="Node"]
+
+[node name="died" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )
+
+[node name="shoot_r" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+volume_db = 24.0
+
+[node name="shoot_q" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = 5.0
+max_distance = 10000.0
+
+[node name="audiocoin" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = 2.0
+
+[node name="audiovirus" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )

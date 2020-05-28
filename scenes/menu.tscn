@@ -24,6 +24,7 @@ custom_constants/margin_top = 200
 custom_constants/margin_left = 0
 custom_constants/margin_bottom = 50
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
