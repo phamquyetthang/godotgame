@@ -20,16 +20,20 @@ signal died()
 var coins = 0
 var sfire = 3
 var sulti = 0
+func _ready():
+	if GLOBAL.musicOn == true:
+		$seno.play()
 func _is_dead():
 	is_live = false
-	$died.play()
+	if GLOBAL.soundOn == true:
+		$died.play()
 	if not is_on_floor():
 		$cute.position = Vector2(0, 48)
 	$CollisionShape2D.call_deferred("set_disabled", true)
 	motion = Vector2(0, 0)
 	$cute.play("dead")
 	$TimerDead.start()
-	emit_signal("died")
+	emit_signal("died", is_live)
 	
 func _is_live():
 	motion.y += g
@@ -43,12 +47,16 @@ func _is_live():
 		motion.x = 0
 		$cute.play('idle')
 		dev_mod = true
+		#GLOBAL.neverdie = true
+		emit_signal("died", is_live)
 	elif Input.is_action_pressed("off_mod"):
 		dev_mod = false
+		emit_signal("died", is_live)
 	if is_on_floor():
 		if Input.is_action_just_pressed("my_up"):
 			motion.y = -jump
-			$jump.play()
+			if GLOBAL.soundOn == true:
+				$jump.play()
 	else:
 		if motion.y < 0:
 			$cute.play("jump")
@@ -74,7 +82,8 @@ func skill_q():
 		var fileball = FIREBALL.instance()
 		fileball.set_direction(ballposition)
 		get_parent().add_child(fileball)
-		$shoot_q.play()
+		if GLOBAL.soundOn == true:
+			$shoot_q.play()
 		fileball.position = $Position2D.global_position
 		set_fire(-1)
 
@@ -85,7 +94,8 @@ func skill_r():
 		var ulti = ULTI.instance()
 		ulti.set_direction(ballposition)
 		get_parent().add_child(ulti)
-		$shoot_r.play()
+		if GLOBAL.soundOn == true:
+			$shoot_r.play()
 		ulti.position = $Position2D.global_position
 		set_ulti(-1)
 
@@ -113,7 +123,8 @@ func _on_TimerStart_timeout():
 func set_coin(x):
 	coins+=x
 	GLOBAL.coins = coins
-	$audiocoin.play()
+	if GLOBAL.soundOn == true:
+		$audiocoin.play()
 	emit_signal("update_coin", coins)
 
 func set_fire(x):
@@ -124,5 +135,6 @@ func set_ulti(x):
 	emit_signal("update_ulti", sulti)
 func set_hp(n):
 	hp += n
-	$audiovirus.play()
+	if GLOBAL.soundOn == true:
+		$audiovirus.play()
 	emit_signal("update_live", hp)

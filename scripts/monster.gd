@@ -41,6 +41,6 @@ func _on_monster_body_entered(body):
 		is_start = false
 
 
-func _on_player_died():
-	is_start = false
+func _on_player_died(is_live):
+	is_start = is_live
 	pass

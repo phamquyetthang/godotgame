@@ -2,7 +2,15 @@ extends Node
 
 func _ready():
 	$MarginContainer/VBoxContainer/VBoxContainer/StartButton.grab_focus()
-
+func _process(delta):
+	if $music.pressed == true:
+		GLOBAL.musicOn = true
+	else:
+		GLOBAL.musicOn = false
+	if $sound.pressed == true:
+		GLOBAL.soundOn = true
+	else:
+		GLOBAL.soundOn = false
 func _physics_process(delta):
 	delta = delta
 	if $MarginContainer/VBoxContainer/VBoxContainer/StartButton.is_hovered() == true:

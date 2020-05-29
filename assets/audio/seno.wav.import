@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/seno.wav-09247212de202075f87c4bda75268cd9.sample"
+
+[deps]
+
+source_file="res://assets/audio/seno.wav"
+dest_files=[ "res://.import/seno.wav-09247212de202075f87c4bda75268cd9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
