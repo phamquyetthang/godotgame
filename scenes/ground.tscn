@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://scripts/ground.gd" type="Script" id=2]
 [ext_resource path="res://scenes/allcoin.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/allvirus.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/medicine.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/enemies.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3168, 32 )
@@ -46,6 +47,18 @@ position = Vector2( -928, -864 )
 [node name="allcoin7" parent="totalcoin" instance=ExtResource( 3 )]
 position = Vector2( -32, -768 )
 
+[node name="allcoin8" parent="totalcoin" instance=ExtResource( 3 )]
+position = Vector2( 886.645, -905.387 )
+
+[node name="allcoin9" parent="totalcoin" instance=ExtResource( 3 )]
+position = Vector2( 1413.63, -776.202 )
+
+[node name="allcoin10" parent="totalcoin" instance=ExtResource( 3 )]
+position = Vector2( 2073.91, -899.235 )
+
+[node name="allcoin11" parent="totalcoin" instance=ExtResource( 3 )]
+position = Vector2( 2543.49, -800.809 )
+
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2( 3232, 768 )
 
@@ -72,14 +85,40 @@ position = Vector2( 1792, 486.868 )
 [node name="allvirus5" parent="totalvirus" instance=ExtResource( 4 )]
 position = Vector2( 2632, 544 )
 
+[node name="allvirus6" parent="totalvirus" instance=ExtResource( 4 )]
+position = Vector2( 2884.22, 490.686 )
+
+[node name="allvirus7" parent="totalvirus" instance=ExtResource( 4 )]
+position = Vector2( 4159.66, 492.736 )
+
 [node name="allmedi" type="Node2D" parent="."]
 
 [node name="medicine" parent="allmedi" instance=ExtResource( 5 )]
 position = Vector2( 2112, 413.868 )
 
 [node name="medicine2" parent="allmedi" instance=ExtResource( 5 )]
-position = Vector2( 3392, 558.868 )
+position = Vector2( 3423.92, 555.437 )
 
 [node name="medicine3" parent="allmedi" instance=ExtResource( 5 )]
-position = Vector2( 4768, 472 )
+position = Vector2( 4803.37, 491.045 )
+
+[node name="medicine4" parent="allmedi" instance=ExtResource( 5 )]
+position = Vector2( 5911.99, 494.093 )
+
+[node name="allenemies" type="Node2D" parent="."]
+
+[node name="enemies" parent="allenemies" instance=ExtResource( 6 )]
+position = Vector2( 1774.39, 473.248 )
+
+[node name="enemies2" parent="allenemies" instance=ExtResource( 6 )]
+position = Vector2( 2435.57, 409.63 )
+
+[node name="enemies3" parent="allenemies" instance=ExtResource( 6 )]
+position = Vector2( 2971.78, 477.792 )
+
+[node name="enemies4" parent="allenemies" instance=ExtResource( 6 )]
+position = Vector2( 5200.68, 466.432 )
+
+[node name="enemies5" parent="allenemies" instance=ExtResource( 6 )]
+position = Vector2( 5959.55, 475.52 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

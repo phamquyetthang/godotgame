@@ -3,7 +3,7 @@ extends KinematicBody2D
 
 var motion = Vector2()
 export var maxspeed = 150
-export var jump = 350
+export var jump = 280
 export var g = 10
 export(int) var hp = 10
 const FIREBALL = preload("res://scenes/fireball.tscn")
@@ -17,6 +17,7 @@ signal update_fire()
 signal update_ulti()
 signal update_speed()
 signal died()
+var jump_count = 0
 var coins = 0
 var sfire = 3
 var sulti = 0
@@ -52,11 +53,13 @@ func _is_live():
 	elif Input.is_action_pressed("off_mod"):
 		dev_mod = false
 		emit_signal("died", is_live)
-	if is_on_floor():
-		if Input.is_action_just_pressed("my_up"):
+	if Input.is_action_just_pressed("my_up") && jump_count <1:
+			jump_count += 1
 			motion.y = -jump
 			if GLOBAL.soundOn == true:
 				$jump.play()
+	if is_on_floor():
+		jump_count = 0
 	else:
 		if motion.y < 0:
 			$cute.play("jump")

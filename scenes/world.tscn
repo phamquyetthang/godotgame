@@ -1,11 +1,9 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/spawner_ground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/coins.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/virus.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/greatwall.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/smallwall.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/enemies.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/fireitems.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/gui/1876.jpg" type="Texture" id=9]
@@ -82,12 +80,6 @@ position = Vector2( 1760, 483.5 )
 
 [node name="virus6" parent="allvirus" instance=ExtResource( 4 )]
 position = Vector2( 1792, 483.5 )
-
-[node name="greatwall" parent="." instance=ExtResource( 5 )]
-position = Vector2( 2048, 448 )
-
-[node name="smallwall" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1056, 480 )
 
 [node name="items" type="Node2D" parent="."]
 
